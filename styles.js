@@ -1,7 +1,4 @@
-// styles.js
-
 import { StyleSheet } from "react-native";
-// styles sheet to store all the styles in one place
 const styles = StyleSheet.create({
 	row: {
 		flexDirection: "row",
@@ -42,7 +39,6 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 	},
 	expenseTile: {
-		// column with 3 cells
 		flexDirection: "row",
 		justifyContent: "space-between",
 		backgroundColor: "lightgrey",
@@ -54,9 +50,6 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		width: "22%",
 		textAlign: "center",
-	},
-	formAdd: {
-		// display: "none",
 	},
 	textInput: {
 		borderRadius: 12,
