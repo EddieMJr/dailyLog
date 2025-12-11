@@ -15,50 +15,36 @@ export default function App() {
   const categories = ["Food", "Clothes", "Bills", "Others"];
   const screenWidth = Dimensions.get("window").width;
 
-  // Chart data: numeric amounts only
   const [chartData, setChartData] = useState([
     { name: "Food", amount: 0, color: "#c30010" },
     { name: "Clothes", amount: 0, color: "#0e4c92" },
-    { name: "Bills", amount: 0, color: "darkGreen" },
+    { name: "Bills", amount: 0, color: "green" },
     { name: "Others", amount: 0, color: "#967bb6" },
   ]);
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      <ScrollView contentContainerStyle={{ alignItems: "center", paddingBottom: 100 }}>
+      <ScrollView contentContainerStyle={{ alignItems: "center", paddingBottom: 50 }}>
         <Text style={styles.heading}>Native Task Checker</Text>
         <Text style={styles.heading2}>Check your budget and log them daily!</Text>
 
         {/* PieChart */}
-        <View style={{ alignItems: "center", marginVertical: 20 }}>
-          <PieChart
-            data={chartData}
-            width={screenWidth * 0.9}
-            height={200}
-            chartConfig={{
-              backgroundGradientFrom: "#fff",
-              backgroundGradientTo: "#fff",
-              color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-            }}
-            accessor="amount"
-            backgroundColor="transparent"
-            paddingLeft="0"
-            absolute
-          />
-        </View>
+        <PieChart
+          data={chartData}
+          width={screenWidth * 0.9}
+          height={200}
+          chartConfig={{
+            backgroundGradientFrom: "#fff",
+            backgroundGradientTo: "#fff",
+            color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+          }}
+          accessor="amount"
+          backgroundColor="transparent"
+          absolute
+        />
 
-        {/* Custom Legend */}
-        <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "center", marginTop: 10 }}>
-          {chartData.map(item => (
-            <View key={item.name} style={{ flexDirection: "row", alignItems: "center", marginRight: 15, marginBottom: 5 }}>
-              <View style={{ width: 15, height: 15, backgroundColor: item.color, marginRight: 5 }} />
-              <Text style={{ fontSize: 14 }}>{item.name} (${item.amount})</Text>
-            </View>
-          ))}
-        </View>
-
-        {/* Add Form */}
+        {/* Add Expense Form */}
         {addForm ? (
           <Addform
             name={name}
@@ -80,7 +66,7 @@ export default function App() {
           </View>
         )}
 
-        {/* Expense list */}
+        {/* Expense List */}
         <ExpenseComponent
           expenses={expenses}
           setExpenses={setExpenses}
